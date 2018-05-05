@@ -1,42 +1,67 @@
-$(document).ready(function(){
-  /*$('.owl-carousel').owlCarousel({
-    items: 1,
-    loop: true,
-    margin: 10
-  }); */
-  
-  $('.right-panel').hover(
-    function(){
-      $(this).css('z-index', 4);
-      $(this).addClass('expand-left');
-    }, function(){
-      setTimeout(changeIndex, 100)
-      $(this).removeClass('expand-left');
-      $('.right-panel').promise().done(function(){
+// IIFE - Immediately Invoked Function Expression
+(function($, window, document) {
 
-      if($('.left-panel').is(':hover')) {
-        $('.left-panel').addClass('expand-right2');
-        console.log('EXECUTED if(L_PAN hover)');
+  // The $ is now locally scoped 
+
+ // Listen for the jQuery ready event on the document
+ $(document).ready(function() {
+
+   // The DOM is ready!
+
+   /*$('.owl-carousel').owlCarousel({
+      `items: 1,
+      loop: true,
+      margin: 10
+    }); */
+   
+   let left_panel  = $('.left-panel'),
+       right_panel = $('.right-panel'),
+       panel_blurb = $('.panel-blurb');
+
+   // Panel: Hover Functions */
+   left_panel.hover(
+      function(){
+        $(this).removeClass('left-panel__expand2');
+        $(this).addClass('left-panel__expand');
+        console.log("EXECUTED normal L_PAN hover");
+      }, function() {
+        $(this).removeClass('left-panel__expand left-panel__full');
+        $('.panel-blurb').hide();
       }
-    });
-  });
-  
-  $('.left-panel').hover(
-    function(){
-      $(this).removeClass('expand-right2');
-      $(this).addClass('expand-right');
-      console.log("I just executed normal L-PAN hover")
-    }, function() {
-      $(this).removeClass('expand-right');
-    }
-  );
-  
-  $('.left-panel').click(function(){
-    // remember to look at gifffer for play/pause GIF lib
-    $(this).css('background-image', 'url(imgs/hk-stag2.jpg)')
-  })
-});
+    );
+   
+    right_panel.hover(
+      function(){
+        $(this).css('z-index', 4);
+        $(this).addClass('right-panel__expand');
+      }, 
+      function(){
+        setTimeout(changeIndex, 100)
+        $(this).removeClass('right-panel__expand right-panel__full');
+        $('.panel-blurb').hide();
+        right_panel.promise().done(function(){
 
-function changeIndex() {
-  $('.right-panel').css('z-index', 1);
-}
+        if(left_panel.is(':hover')) {
+          left_panel.addClass('left-panel__expand2');
+          console.log('EXECUTED if(L_PAN hover)');
+        }
+      });
+    });
+
+   left_panel.click(function(){
+      $(this).addClass('left-panel__full')
+      $('.left-panel .panel-blurb').show()
+    })
+
+   right_panel.click(function(){
+      $(this).addClass('right-panel__full')
+      $('.right-panel .panel-blurb').show()
+    })
+ });
+
+  function changeIndex() {
+    $('.right-panel').css('z-index', 1);
+  }
+
+}(window.jQuery, window, document));
+// The global jQuery object is passed as a parameter
