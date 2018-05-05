@@ -2,7 +2,7 @@ html, body {
   height: 100%;
   min-width: 100%;
   font-family: 'Oswald', sans-serif;
-  background-color: #333;
+  background-color: #333333;
   margin: 0;
   padding: 0;
   border: 0;
@@ -11,6 +11,13 @@ html, body {
 h2 {
   margin: 0px 10px 10px 20px;
   padding-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 .block {
@@ -44,10 +51,16 @@ h2 {
   height: 300px;
 }
 
-/* CONTAINER CSS
+/* CONTAINER CSS 
+** BLESS: https://bennettfeely.com/clippy/
+** ^-- makes clip-paths for you
+*/
 .parent-container {
-  display: flex;
-  height: calc(100vh - 600px);
+  width: 100%;
+  height: 30vh;
+  position: relative;
+  background: #000;
+  overflow: hidden;
   border: 1px solid #f4c2c2;
 }
 .container {
@@ -55,107 +68,88 @@ h2 {
   height: 100%;
 }
 
+.shape {
+  transition: all 500ms ease-in-out;
+}
+
 .left-panel {
-  position: relative;
+  position: absolute;
   z-index: 2;
   float: left;
+  display: block;
   background-image: url(imgs/hk-stag2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #000;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
   color: #fff;
+  shape-outside: polygon(0 0, 70% 0%, 30% 100%, 0% 100%);
+  clip-path: polygon(0 0, 70% 0%, 30% 100%, 0% 100%);
 }
 
+.left-panel:hover {
+  position: absolute;
+  z-index: 2;
+  background-image: url(imgs/hk-stag.gif);
+  clip-path: polygon(0 0, 80% 0, 40% 100%, 0 100%);
+  animation-duration: 2s;
+  animation-fill-mode: both;
+} 
+
 .right-panel {
-  position: relative;
+  position: absolute;
   z-index: 1;
   float: left;
+  display: block;
   background-image: url(imgs/twitch-con.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #000;
-  max-width: 100%;
-  height: 100%;
-} */
-
-/* INPUT CSS 
-** BLESS: https://bennettfeely.com/clippy/
-*/
-.banners {
   width: 100%;
-  height: 30vh;
-  position: relative;
-  background: #000;
-  overflow: hidden;
-}
-.banners input {
-  display: none;
-}
-.slide1 {
-  background-image: url(imgs/hk-stag2.jpg);
-}
-.slide2 {
-  background-image: url(imgs/twitch-con.jpg);
-}
-.image {
-  display: block;
   height: 100%;
-  width: 100%;
-  position: absolute;
-  overflow: hidden;
-  z-index: 1;
-  background-position: 0 0;
-  background-size: cover;
-  transition: all 2.5s ease-in-out;
+  color: #000;
+  text-align: right;
+  shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%);
   clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%);
-  /*animation-duration: 2s;
-  animation-name: clipout;*/
+  transition-timing-function: ease-out;
+} 
+
+.right-panel:hover {
+  position: absolute;
+  z-index: 2;
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 20% 100%);
+  animation-duration: 2s;
+  animation-fill-mode: both;
 }
-input:hover + .slide1 {
+
+/*.expand-right {
   animation-duration: 2s;
   animation-name: expand-right;
-  animation-fill-mode: forwards;
-}
-input:hover + .slide2 {
-  animation-duration: 2s;
-  animation-name: expand-left;
-  animation-fill-mode: forwards;
-}
-
-input:checked + .image {
-  z-index: 3;
-  clip-path: polygon(0 0, 70% 0%, 30% 100%, 0% 100%);
-  cursor: default;
-  transition: all 2.5s ease-in-out;
-}
-.image:nth-child(2),
-input:checked + * + * + .image{
+  animation-fill-mode: both;
+  position: absolute;
   z-index: 2;
-  cursor: pointer;
+  transition: all 2s ease-in-out;
 }
-.content{
-  color: #FFFFFF;
-  display: inline-block;
-  vertical-align: top;
-  text-transform: uppercase;
-  font-size: 34px;
-  margin: 10px 0px 0px 18px;
-  opacity: 0;
-  transition: 0s opacity .5s;
+.expand-left {
+  animation-duration: 1s;
+  animation-name: expand-left;
+  animation-fill-mode: both;
+  position: absolute;
+  z-index: 2;
 }
-input:checked + .image .content{
-  opacity: 1;
-  transition: 0.8s opacity 0.8s;
+.collapse-right {
+  animation-duration: 2s;
+  animation-name: collapse-right;
+  animation-fill-mode: both;
 }
-.spanner{
-  vertical-align: middle;
-  width: 0;
-  height: 100%;
-  display: inline-block;
-}
-
+.collapse-left {
+  animation-duration: 2s;
+  animation-name: collapse-left;
+  animation-fill-mode: forwards;
+  position: absolute;
+  z-index: 1;
+} 
 @keyframes expand-right {
   from { clip-path: polygon(0 0, 70% 0%, 30% 100%, 0% 100%); }
   to   { clip-path: polygon(0 0, 80% 0, 40% 100%, 0% 100%); }
@@ -163,5 +157,15 @@ input:checked + .image .content{
 
 @keyframes expand-left {
   from { clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%); }
-  to   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+  to   { clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 20% 100%); }
 }
+
+@keyframes collapse-right {
+  from { clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 20% 100%); }
+  to   { clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%); }
+}
+
+@keyframes collapse-left {
+  from { clip-path: polygon(0 0, 80% 0%, 40% 100%, 0% 100%); }
+  to   { clip-path: polygon(0 0, 70% 0, 30% 100%, 0% 100%); }
+} */
