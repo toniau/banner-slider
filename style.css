@@ -1,8 +1,12 @@
+/* Style Guide: 
+** http://techblog.steelseries.com/ux-guide/index.html 
+*/
+
 html, body {
   height: 100%;
   min-width: 100%;
   font-family: 'Oswald', sans-serif;
-  background-color: #333333;
+  background-color: #4d4d4d;
   margin: 0;
   padding: 0;
   border: 0;
@@ -24,7 +28,7 @@ a {
   height: 100px;
   display: block;
   color: white;
-  background-color: #999;
+  background-color: #1c1c1c;
   padding: 20px 0px 0px 20px;
 }
 
@@ -56,12 +60,11 @@ a {
 ** ^-- makes clip-paths for you
 */
 .parent-container {
-  width: 100%;
   height: 30vh;
   position: relative;
   background: #000;
   overflow: hidden;
-  border: 1px solid #f4c2c2;
+  border: 4px solid #ff5200;
 }
 .container {
   width: 100%;
@@ -79,8 +82,8 @@ a {
   display: block;
   background-image: url(imgs/hk-stag2.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
   background-color: #000;
+  background-position: -20px 0;
   width: 100%;
   height: 100%;
   color: #fff;
@@ -88,14 +91,14 @@ a {
   clip-path: polygon(0 0, 70% 0%, 30% 100%, 0% 100%);
 }
 
-.left-panel:hover {
+/*.left-panel:hover {
   position: absolute;
   z-index: 2;
   background-image: url(imgs/hk-stag.gif);
   clip-path: polygon(0 0, 80% 0, 40% 100%, 0 100%);
   animation-duration: 2s;
   animation-fill-mode: both;
-} 
+} */
 
 .right-panel {
   position: absolute;
@@ -115,29 +118,38 @@ a {
   transition-timing-function: ease-out;
 } 
 
-.right-panel:hover {
+/*.right-panel:hover {
+  position: absolute;
+  z-index: 2;
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 20% 100%);
+  animation-duration: 2s;
+  animation-fill-mode: both;
+} */
+
+.expand-right {
+  position: absolute;
+  z-index: 2;
+  background-image: url(imgs/hk-stag.gif);
+  clip-path: polygon(0 0, 80% 0, 40% 100%, 0 100%);
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+.expand-right2 {
+  position: absolute;
+  z-index: 2;
+  background-image: url(imgs/hk-stag.gif);
+  clip-path: polygon(0 0, 80% 0, 40% 100%, 0 100%);
+  animation-duration: 3s;
+  animation-fill-mode: both;
+}
+.expand-left {
   position: absolute;
   z-index: 2;
   clip-path: polygon(60% 0, 100% 0, 100% 100%, 20% 100%);
   animation-duration: 2s;
   animation-fill-mode: both;
 }
-
-/*.expand-right {
-  animation-duration: 2s;
-  animation-name: expand-right;
-  animation-fill-mode: both;
-  position: absolute;
-  z-index: 2;
-  transition: all 2s ease-in-out;
-}
-.expand-left {
-  animation-duration: 1s;
-  animation-name: expand-left;
-  animation-fill-mode: both;
-  position: absolute;
-  z-index: 2;
-}
+/*
 .collapse-right {
   animation-duration: 2s;
   animation-name: collapse-right;
