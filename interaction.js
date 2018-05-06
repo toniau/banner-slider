@@ -35,8 +35,8 @@
         $(this).removeClass('left-panel__expand left-panel__full')
         panel_content.hide()
         panel_close.hide()
-        left_panel.on('mouseenter')
-        right_panel.on('mouseenter')
+        //left_panel.on('mouseenter', left_mouseIn());
+        //right_panel.on('mouseenter', right_mouseIn());
       },
       
       'click': function() {
@@ -49,7 +49,7 @@
           console.log('removed LP_FULL')
           panel_content.hide()
           panel_close.hide()
-          right_panel.off('mouseenter');
+          //right_panel.off('mouseenter');
           panel_close.removeData('clicked')
         }
         
@@ -73,8 +73,8 @@
         $(this).removeClass('right-panel__expand right-panel__full')
         panel_content.hide()
         panel_close.hide()
-        left_panel.on('mouseenter')
-        right_panel.on('mouseenter')
+        //left_panel.on('mouseenter', left_mouseIn());
+        //right_panel.on('mouseenter', right_mouseIn());
         
         right_panel.promise().done(function () {
 
@@ -91,7 +91,7 @@
         $('.right-panel .panel-content').show()
         
         if($('.right-panel .panel-close').data('clicked')){
-          left_panel.off('mouseenter')
+          //left_panel.off('mouseenter')
           right_panel.removeClass('right-panel__expanded right-panel__full')
           console.log('removed LP_FULL')
           panel_content.hide()
@@ -100,25 +100,6 @@
         }
       }
     });
-    
-    /*panel_collapse.on({
-      'mouseenter': function() {
-        let currentPanel = $(this).parent().parent();
-      },
-      'click': function() {
-        let currentPanel = $(this).parent().parent();
-        
-        if(currentPanel.hasClass('right-panel__full')){
-          currentPanel.removeClass('.right_panel__full .panel-content .panel-collapse')
-          console.log('CLOSED : right panel')
-        }
-        else {
-          currentPanel.removeClass('.left_panel__full .panel-content .panel-collapse')
-          console.log('CLOSED : left panel')
-        }
-      }
-    }) */
-    
     
     /* ---------
     ** Inner Panel Function: CLOSE
@@ -136,6 +117,17 @@
   
   function changeIndex() {
     $('.right-panel').css('z-index', 1);
+  }
+  
+  function right_mouseIn() {
+    $(this).css('z-index', 4)
+    $(this).addClass('right-panel__expand')
+  }
+  
+  function left_mouseIn() {
+    $(this).removeClass('left-panel__expand2')
+    $(this).addClass('left-panel__expand')
+    console.log("EXECUTED normal L_PAN hover")
   }
 
 }(window.jQuery, window, document));
