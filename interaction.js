@@ -33,12 +33,12 @@
       
       'mouseleave': function() {
         $(this).removeClass('left-panel__expand left-panel__full');
-        $('.panel-blurb').hide();
+        $('.panel-content').hide();
       },
       
       'click': function() {
         $(this).addClass('left-panel__full')
-        $('.left-panel .panel-blurb').show()
+        $('.left-panel .panel-content').show()
       }
     });
     
@@ -57,7 +57,7 @@
       'mouseleave': function() {
         setTimeout(changeIndex, 100)
         $(this).removeClass('right-panel__expand right-panel__full');
-        $('.panel-blurb').hide();
+        $('.panel-content').hide();
         
         right_panel.promise().done(function () {
 
@@ -70,7 +70,7 @@
       
       'click': function() {
         $(this).addClass('right-panel__full')
-        $('.right-panel .panel-blurb').show()
+        $('.right-panel .panel-content').show()
       }
     });
 
