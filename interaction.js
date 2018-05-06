@@ -2,7 +2,6 @@
 (function ($, window, document) {
 
   // The $ is now locally scoped 
-
   // Listen for the jQuery ready event on the document
   $(document).ready(function () {
 
@@ -14,66 +13,135 @@
        margin: 10
      }); */
 
-    let left_panel  = $('.left-panel'),
-        right_panel = $('.right-panel'),
-        panel_blurb = $('.panel-blurb');
+    let left_panel    = $('.left-panel'),
+        right_panel   = $('.right-panel'),
+        panel_content = $('.panel-content'),
+        panel_collapse= $('.panel-collapse'),
+        panel_close   = $('.panel-close');
+    
+    
+    /*
+    $('#lx').click(function(){
+      $('.left-panel').off('mouseenter')
+      $('.left-panel').removeClass('.left-panel__full');
+      $('.panel-collapse').hide();
+      $('.panel-content').hide()
+      if($('.left-panel').hasClass('.left-panel__full')){
+        console.log("DID NOT REMOVE LP_FULL")
+      } else { console.log("REMOVED LP_FULL")}
+    })
+    
+    $('#rx').click(function(){
+      $('.right-panel').removeClass('.right-panel__full .right-panel__expand .panel-content .panel-collapse')
+      console.log('removed RP classes')
+    }) */
+    
     
     /* ---------
     ** LEFT Panel Functions
     ** Handles hovering and clicking actions of LEFT banner panel only.
-    ** To edit animations, see CSS classes tagged as 'left-panel'.
+    ** To edit animations, see CSS classes tagged as 'left-panel__*'.
     ** --------- */
     left_panel.on({
       
       'mouseenter': function() {
-        $(this).removeClass('left-panel__expand2');
-        $(this).addClass('left-panel__expand');
-        console.log("EXECUTED normal L_PAN hover");
+        $(this).removeClass('left-panel__expand2')
+        $(this).addClass('left-panel__expand')
+        console.log("EXECUTED normal L_PAN hover")
       },
       
       'mouseleave': function() {
-        $(this).removeClass('left-panel__expand left-panel__full');
-        $('.panel-content').hide();
+        $(this).removeClass('left-panel__expand left-panel__full')
+        $('.panel-content').hide()
+        $('.panel-close').hide()
       },
       
       'click': function() {
         $(this).addClass('left-panel__full')
+        $('.left-panel .panel-close').show()
         $('.left-panel .panel-content').show()
+        
+        if($('.left-panel .panel-close').data('clicked')){
+          left_panel.removeClass('left-panel__expanded left-panel__full')
+          console.log('removed LP_FULL')
+          $('.panel-content').hide()
+          $('.panel-close').hide()
+          panel_close.removeData('clicked');
+        }
+        
       }
     });
     
     /* ---------
     ** RIGHT Panel Functions
     ** Handles hovering and clicking actions of RIGHT banner panel only.
-    ** To edit animations, see CSS classes tagged as 'right-panel'.
+    ** To edit animations, see CSS classes tagged as 'right-panel__*'.
     ** --------- */
     right_panel.on({
       
       'mouseenter': function() {
-        $(this).css('z-index', 4);
-        $(this).addClass('right-panel__expand');
+        $(this).css('z-index', 4)
+        $(this).addClass('right-panel__expand')
       },
       
       'mouseleave': function() {
         setTimeout(changeIndex, 100)
-        $(this).removeClass('right-panel__expand right-panel__full');
-        $('.panel-content').hide();
+        $(this).removeClass('right-panel__expand right-panel__full')
+        $('.panel-content').hide()
+        $('.panel-closee').hide()
         
         right_panel.promise().done(function () {
 
           if (left_panel.is(':hover')) {
-            left_panel.addClass('left-panel__expand2');
-            console.log('EXECUTED if(L_PAN hover)');
+            left_panel.addClass('left-panel__expand2')
+            console.log('EXECUTED if(L_PAN hover)')
           }
         });
       },
       
       'click': function() {
         $(this).addClass('right-panel__full')
+        $('.right-panel .panel-close').show()
         $('.right-panel .panel-content').show()
+        
+        if($('.right-panel .panel-close').data('clicked')){
+          right_panel.removeClass('right-panel__expanded right-panel__full')
+          console.log('removed LP_FULL')
+          $('.panel-content').hide()
+          $('.panel-close').hide()
+          panel_close.removeData('clicked');
+        }
       }
     });
-
+    
+    /*panel_collapse.on({
+      'mouseenter': function() {
+        let currentPanel = $(this).parent().parent();
+      },
+      'click': function() {
+        let currentPanel = $(this).parent().parent();
+        
+        if(currentPanel.hasClass('right-panel__full')){
+          currentPanel.removeClass('.right_panel__full .panel-content .panel-collapse')
+          console.log('CLOSED : right panel')
+        }
+        else {
+          currentPanel.removeClass('.left_panel__full .panel-content .panel-collapse')
+          console.log('CLOSED : left panel')
+        }
+      }
+    }) */
+    
+    
+    /* ---------
+    ** Inner Panel Function: CLOSE
+    ** Listens for click on panel close.
+    ** --------- */
+    panel_close.on({
+      'click': function() {
+        $(this).data('clicked', true);
+      }
+    })
     
   // End doc ready  
   });
