@@ -13,29 +13,10 @@
        margin: 10
      }); */
 
-    let left_panel    = $('.left-panel'),
-        right_panel   = $('.right-panel'),
-        panel_content = $('.panel-content'),
-        panel_collapse= $('.panel-collapse'),
-        panel_close   = $('.panel-close');
-    
-    
-    /*
-    $('#lx').click(function(){
-      $('.left-panel').off('mouseenter')
-      $('.left-panel').removeClass('.left-panel__full');
-      $('.panel-collapse').hide();
-      $('.panel-content').hide()
-      if($('.left-panel').hasClass('.left-panel__full')){
-        console.log("DID NOT REMOVE LP_FULL")
-      } else { console.log("REMOVED LP_FULL")}
-    })
-    
-    $('#rx').click(function(){
-      $('.right-panel').removeClass('.right-panel__full .right-panel__expand .panel-content .panel-collapse')
-      console.log('removed RP classes')
-    }) */
-    
+    let left_panel     = $('.left-panel'),
+        right_panel    = $('.right-panel'),
+        panel_content  = $('.panel-content'),
+        panel_close    = $('.panel-close');
     
     /* ---------
     ** LEFT Panel Functions
@@ -52,8 +33,10 @@
       
       'mouseleave': function() {
         $(this).removeClass('left-panel__expand left-panel__full')
-        $('.panel-content').hide()
-        $('.panel-close').hide()
+        panel_content.hide()
+        panel_close.hide()
+        left_panel.on('mouseenter')
+        right_panel.on('mouseenter')
       },
       
       'click': function() {
@@ -64,9 +47,10 @@
         if($('.left-panel .panel-close').data('clicked')){
           left_panel.removeClass('left-panel__expanded left-panel__full')
           console.log('removed LP_FULL')
-          $('.panel-content').hide()
-          $('.panel-close').hide()
-          panel_close.removeData('clicked');
+          panel_content.hide()
+          panel_close.hide()
+          right_panel.off('mouseenter');
+          panel_close.removeData('clicked')
         }
         
       }
@@ -87,8 +71,10 @@
       'mouseleave': function() {
         setTimeout(changeIndex, 100)
         $(this).removeClass('right-panel__expand right-panel__full')
-        $('.panel-content').hide()
-        $('.panel-closee').hide()
+        panel_content.hide()
+        panel_close.hide()
+        left_panel.on('mouseenter')
+        right_panel.on('mouseenter')
         
         right_panel.promise().done(function () {
 
@@ -105,11 +91,12 @@
         $('.right-panel .panel-content').show()
         
         if($('.right-panel .panel-close').data('clicked')){
+          left_panel.off('mouseenter')
           right_panel.removeClass('right-panel__expanded right-panel__full')
           console.log('removed LP_FULL')
-          $('.panel-content').hide()
-          $('.panel-close').hide()
-          panel_close.removeData('clicked');
+          panel_content.hide()
+          panel_close.hide()
+          panel_close.removeData('clicked')
         }
       }
     });
