@@ -7,11 +7,12 @@
 
     // The DOM is ready!
 
-    /*$('.owl-carousel').owlCarousel({
-       `items: 1,
-       loop: true,
-       margin: 10
-     }); */
+    $('.owl-carousel').owlCarousel({
+      items: 1,
+      loop: true,
+      margin: 10,
+      nav: true
+     }); 
 
     let left_panel     = $('.left-panel'),
         right_panel    = $('.right-panel'),
@@ -27,13 +28,17 @@
       
       'mouseenter': function() {
         $(this).removeClass('left-panel__expand2')
+        right_panel.css('z-index', 1)
+        panel_content.hide()
+        right_panel.addClass('right-panel__collapse')
         $(this).addClass('left-panel__expand')
+        
         console.log("EXECUTED normal L_PAN hover")
       },
       
       'mouseleave': function() {
         $(this).removeClass('left-panel__expand left-panel__full')
-        panel_content.hide()
+        right_panel.removeClass('right-panel__collapse')
         panel_close.hide()
         //left_panel.on('mouseenter', left_mouseIn());
         //right_panel.on('mouseenter', right_mouseIn());
@@ -41,13 +46,14 @@
       
       'click': function() {
         $(this).addClass('left-panel__full')
+        console.log("ADDED CLASS: left-panel__full")
         $('.left-panel .panel-close').show()
-        $('.left-panel .panel-content').show()
+        $('.left-panel .panel-content').fadeIn()
         
         if($('.left-panel .panel-close').data('clicked')){
           left_panel.removeClass('left-panel__expanded left-panel__full')
           console.log('removed LP_FULL')
-          panel_content.hide()
+          panel_content.fadeOut()
           panel_close.hide()
           //right_panel.off('mouseenter');
           panel_close.removeData('clicked')
@@ -64,37 +70,40 @@
     right_panel.on({
       
       'mouseenter': function() {
+        panel_content.hide()
         $(this).css('z-index', 4)
+        left_panel.addClass('left-panel__collapse')
         $(this).addClass('right-panel__expand')
       },
       
       'mouseleave': function() {
-        setTimeout(changeIndex, 100)
+        setTimeout(changeIndex, 50)
         $(this).removeClass('right-panel__expand right-panel__full')
-        panel_content.hide()
+        left_panel.removeClass('left-panel__collapse')
         panel_close.hide()
+        
         //left_panel.on('mouseenter', left_mouseIn());
         //right_panel.on('mouseenter', right_mouseIn());
         
-        right_panel.promise().done(function () {
-
+        /*right_panel.promise().done(function () {
+          
           if (left_panel.is(':hover')) {
             left_panel.addClass('left-panel__expand2')
             console.log('EXECUTED if(L_PAN hover)')
           }
-        });
+        }); */
       },
       
       'click': function() {
         $(this).addClass('right-panel__full')
         $('.right-panel .panel-close').show()
-        $('.right-panel .panel-content').show()
+        $('.right-panel .panel-content').fadeIn()
         
         if($('.right-panel .panel-close').data('clicked')){
           //left_panel.off('mouseenter')
           right_panel.removeClass('right-panel__expanded right-panel__full')
           console.log('removed LP_FULL')
-          panel_content.hide()
+          panel_content.fadeOut('slow')
           panel_close.hide()
           panel_close.removeData('clicked')
         }

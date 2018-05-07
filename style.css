@@ -19,14 +19,12 @@ h2 {
   letter-spacing: 1px;
   color: #fff;
 }
-
 h3 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -38,8 +36,7 @@ a {
   padding: 20px 0px 0px 20px;
 }
 
-.slider {
-  height: calc(100vh - 1000px);
+/*.slider {
   border: 1px solid #f4c2c2;
 }
 
@@ -47,20 +44,7 @@ a {
   section.slider {
     min-height: 30vh;
   }
-}
-
-.owl-carousel {
-  height: 100% !important;
-}
-
-.owl-carousel .item {
-  color: #ffffff;
-}
-
-.owl-carousel img {
-  height: 300px;
-}
-
+}*/
 /* CONTAINER CSS, General Banner Panel CSS
 ** BLESS: https://bennettfeely.com/clippy/
 ** ^-- makes clip-paths for you
@@ -80,6 +64,7 @@ a {
 .container {
   width: 100%;
   height: 100%;
+  background-color: #ff5200
 }
 .shape {
   transition: all 500ms ease-in-out;
@@ -96,7 +81,6 @@ a {
 .panel-blurb {
   position: absolute;
   z-index: 9;
-  padding: 4px;
   height: 100%;
 }
 .panel-blurb__link {
@@ -121,13 +105,13 @@ a {
   background-image: url(imgs/hk-stag2.jpg);
   background-repeat: no-repeat;
   background-color: #090915;
-  background-size: cover;
-  background-position: -110px 0;
+  background-position: -100px 0;
   width: 100%;
   height: 100%;
   color: #fff;
-  shape-outside: polygon(0 0, 70% 0%, 30% 100%, 0% 100%);
-  clip-path: polygon(0 0, 70% 0%, 30% 100%, 0% 100%);
+  shape-outside: polygon(0 0, 69.5% 0%, 29.5% 100%, 0% 100%);
+  clip-path: polygon(0 0, 69.5% 0%, 29.5% 100%, 0% 100%);
+  transition: all 0.5s ease-in-out;
 }
 .right-panel {
   position: absolute;
@@ -135,16 +119,16 @@ a {
   display: block;
   background-image: url(imgs/sv-road3.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #000;
+  background-size: calc(120vh);
+  background-color: rgba(240, 240, 240, 1);
   background-position: right;
   width: 100%;
   height: 100%;
   color: #000;
   text-align: right;
-  shape-outside: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%);
-  clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%);
-  transition-timing-function: ease-out;
+  shape-outside: polygon(70.5% 0%, 100% 0%, 100% 100%, 30.5% 100%);
+  clip-path: polygon(70.5% 0%, 100% 0%, 100% 100%, 30.5% 100%);
+  transition: all 0.5s ease-in-out;
 }
 
 /* Panels : Half-expanded State */
@@ -152,76 +136,100 @@ a {
   position: absolute;
   z-index: 2;
   background-image: url(imgs/hk-stag.gif);
-  background-position: 0 0;
-  clip-path: polygon(0 0, 80% 0, 40% 100%, 0 100%);
-  animation-duration: 2s;
-  animation-fill-mode: both;
+  shape-outside: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
+  clip-path: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
+  transition: all 0.5s ease-in-out;
 }
 .left-panel__expand2 {
   position: absolute;
   z-index: 2;
+  transition-timing-function: ease-in-out;
   background-image: url(imgs/hk-stag.gif);
-  clip-path: polygon(0 0, 80% 0, 40% 100%, 0 100%);
+  clip-path: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
   animation-duration: 3s;
   animation-fill-mode: both;
+}
+.left-panel__collapse {
+  position: absolute;
+  z-index: 2;
+  shape-outside: polygon(0 0, 59.5% 0, 19.5% 100%, 0 100%);
+  clip-path: polygon(0 0, 59.5% 0, 19.5% 100%, 0 100%);
+  transition: all 0.5s ease-in-out;
 }
 .right-panel__expand {
   position: absolute;
   z-index: 2;
   background-image: url(imgs/sv-road2.gif);
-  background-size: cover;
   background-position: right;
-  clip-path: polygon(60% 0, 100% 0, 100% 100%, 20% 100%);
-  animation-duration: 2s;
-  animation-fill-mode: both;
+  background-size: calc(120vh);
+  shape-outside: polygon(60.5% 0, 100% 0, 100% 100%, 20.5% 100%);
+  clip-path: polygon(60.5% 0, 100% 0, 100% 100%, 20.5% 100%);
+  transition: all 0.5s ease-in-out;
+}
+.right-panel__collapse {
+  position: absolute;
+  z-index: 2;
+  shape-outside: polygon(80.5% 0, 100% 0, 100% 100%, 40.5% 100%);
+  clip-path: polygon(80.5% 0, 100% 0, 100% 100%, 40.5% 100%);
+  transition: all 0.5s ease-in-out;
 }
 
 /* Panels : Fully-expanded State */
 .left-panel__full {
   background-image: url(imgs/hk-stag.gif);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  animation-duration: 1.5s;
-  animation-fill-mode: both;
+  shape-outside: polygon(0 0, 139.5% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 139.5% 0, 100% 100%, 0 100%);
+  transition: all 500ms ease-in-out;
 }
 .right-panel__full {
   background-image: url(imgs/sv-road2.gif);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  animation-duration: 1.5s;
-  animation-fill-mode: both;
+  shape-outside: polygon(0 0, 100% 0, 100% 100%, -40.5% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, -40.5% 100%);
 }
+/* Panels : Fully-expanded State --Panel Content Style */
 .left-panel > .panel-content {
   position: absolute;
   z-index: 10;
   right: 0;
 }
-.right-panel > .panel-content {
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  width: 30%;
-}
 .left-panel  .panel-blurb {
   position: absolute;
   z-index: 10;
-  padding: 10px;
+  padding: 20px 10px 10px 10px;
   background-color: rgba(93, 93, 93, 0.3);
-}
-.right-panel  .panel-blurb {
-  position: absolute;
-  z-index: 10;
-  padding: 10px;
-  background-color: rgba(240, 240, 240, 0.8);
-  text-align: left;
 }
 .left-panel .panel-close {
   right: 0;
   color: #fff;
+}
+.right-panel > .panel-content {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  width: 25%;
+}
+.right-panel  .panel-blurb {
+  position: absolute;
+  z-index: 10;
+  padding: 20px 10px 10px 10px;
+  background-color: rgba(240, 240, 240, 0.92);
+  text-align: left;
+}
+.right-panel .panel-blurb__link {
+  color: #000;
 }
 .right-panel .panel-close {
   left: 0;
   color: #000;
 }
 
+/* Media Queries */
+@media screen and (min-width: 1370px) {
+  .right-panel__full {
+    transition: all 0.5s ease-in-out;
+    background-size: calc(100vh);
+  }
+}
 /*
 @keyframes expand-right {
   from { clip-path: polygon(0 0, 70% 0%, 30% 100%, 0% 100%); }
