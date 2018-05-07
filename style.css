@@ -89,12 +89,15 @@ a {
 }
 .panel-close {
   position: absolute;
-  z-index: 20;
+  z-index: 100 !important;
   top: 0 !important;
   cursor: pointer;
   font-size: 2em;
   padding: 0 10px 10px 10px;
   margin-top: -10px;
+}
+.panel-close:hover {
+  color:red;
 }
 
 /* Panels : Initial State */
