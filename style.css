@@ -98,7 +98,7 @@ a {
   position: absolute;
   z-index: 2;
   display: block;
-  background-image: url(imgs/hk-stag_RHS-ADD2.jpg);
+  background-image: url('https://raw.githubusercontent.com/toniau/banner-slider/master/imgs/hk-stag_RHS-ADD2.jpg');
   background-repeat: no-repeat;
   background-size: calc(130vh);
   background-color: rgba(93, 93, 93, 1);
@@ -114,7 +114,7 @@ a {
   position: absolute;
   z-index: 1;
   display: block;
-  background-image: url(imgs/sv-road3.jpg);
+  background-image: url('https://raw.githubusercontent.com/toniau/banner-slider/master/imgs/sv-road3.jpg');
   background-repeat: no-repeat;
   background-size: calc(122vh);
   background-color: rgba(240, 240, 240, 1);
@@ -132,7 +132,7 @@ a {
 .left-panel__expand {
   position: absolute;
   z-index: 2;
-  background-image: url(imgs/hk-stag_RHS-ADD2.gif);
+  background-image: url('https://raw.githubusercontent.com/toniau/banner-slider/master/imgs/hk-stag_RHS-ADD2.gif');
   background-size: calc(130vh);
   shape-outside: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
   clip-path: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
@@ -148,7 +148,7 @@ a {
 .right-panel__expand {
   position: absolute;
   z-index: 2;
-  background-image: url(imgs/sv-road2.gif);
+  background-image: url('https://raw.githubusercontent.com/toniau/banner-slider/master/imgs/sv-road2.gif');
   background-position: right;
   background-size: calc(122vh);
   shape-outside: polygon(60.5% 0, 100% 0, 100% 100%, 20.5% 100%);
@@ -165,13 +165,13 @@ a {
 
 /* Panels : Fully-expanded State */
 .left-panel__full {
-  background-image: url(imgs/hk-stag_RHS-ADD2.gif);
+  background-image: url('https://raw.githubusercontent.com/toniau/banner-slider/master/imgs/hk-stag_RHS-ADD2.gif');
   shape-outside: polygon(0 0, 139.5% 0, 100% 100%, 0 100%);
   clip-path: polygon(0 0, 139.5% 0, 100% 100%, 0 100%);
   transition: all 500ms ease-in-out;
 }
 .right-panel__full {
-  background-image: url(imgs/sv-road2.gif);
+  background-image: url('https://raw.githubusercontent.com/toniau/banner-slider/master/imgs/sv-road2.gif');
   shape-outside: polygon(0 0, 100% 0, 100% 100%, -40.5% 100%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, -40.5% 100%);
 }
@@ -231,9 +231,17 @@ a {
 
 /* Media Queries */
 @media screen and (min-width: 1370px) {
+  .left-panel, .left-panel__expanded {
+    transition: all 0.5s ease-in-out;
+    background-size: calc(80vw);
+  }
   .left-panel__full {
     transition: all 0.5s ease-in-out;
     background-size: calc(140vh);
+  }
+  .right-panel, .right-panel__expanded {
+    transition: all 0.5s ease-in-out;
+    background-size: calc(75vw);
   }
   .right-panel__full {
     transition: all 0.5s ease-in-out;
@@ -241,6 +249,6 @@ a {
   }
   .right-panel .panel-blurb {
     padding: 30px 20px 20px 20px;
-    width: 110%;
+    width: 130%;
   }
 }
