@@ -35,13 +35,13 @@
       
       'click': function(event) {
         $(this).addClass('left-panel__full')
-        console.log("ADDED CLASS: left-panel__full")
+        //console.log("ADDED CLASS: left-panel__full")
         $('.left-panel .panel-close').show()
         $('.left-panel .panel-content').fadeIn()
         
         if($('.left-panel .panel-close').data('clicked')){
           left_panel.removeClass('left-panel__expanded left-panel__full')
-          console.log('removed LP_FULL')
+          //console.log('removed LP_FULL')
           panel_content.fadeOut()
           panel_close.hide()
           panel_close.removeData('clicked')
@@ -79,7 +79,7 @@
         
         if($('.right-panel .panel-close').data('clicked')){
           right_panel.removeClass('right-panel__expanded right-panel__full')
-          console.log('removed RP_FULL')
+          //console.log('removed RP_FULL')
           panel_content.fadeOut('slow')
           panel_close.hide()
           panel_close.removeData('clicked')
@@ -96,7 +96,7 @@
     panel_close.on({
       'click': function() {
         $(this).data('clicked', true);
-        console.log("clicked panel close");
+        //console.log("clicked panel close");
       }
     })
     
