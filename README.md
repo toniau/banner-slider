@@ -14,5 +14,6 @@
 ## FUTURE FIXES/CHANGES:
 - re-think Hollow Knight panel for better suited image (maybe pull out stag and animate on separate solid bg)
 - fix font stack
+- think some more about font animations
 - fix panel content size
 - catch the rest of the sizing quirks
