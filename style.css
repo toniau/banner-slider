@@ -100,7 +100,7 @@ a {
   display: block;
   background-image: url('https://raw.githubusercontent.com/toniau/banner-slider/master/imgs/hk-stag_RHS-ADD2.jpg');
   background-repeat: no-repeat;
-  background-size: calc(130vh);
+  background-size: calc(140vh);
   background-color: rgba(93, 93, 93, 1);
   background-position: -100px 0;
   width: 100%;
@@ -230,7 +230,7 @@ a {
 }
 
 /* Media Queries */
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1200px) {
   .left-panel, .left-panel__expanded {
     transition: all 0.5s ease-in-out;
     background-size: calc(80vw);
