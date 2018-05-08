@@ -7,14 +7,6 @@
 
     // The DOM is ready!
 
-    $('.owl-carousel').owlCarousel({
-      items: 1,
-      loop: true,
-      nav: true,
-      mouseDrag: false,
-      touchDrag: false
-     }); 
-
     let left_panel     = $('.left-panel'),
         right_panel    = $('.right-panel'),
         panel_content  = $('.panel-content'),
@@ -77,14 +69,7 @@
         $(this).removeClass('right-panel__expand right-panel__full')
         left_panel.removeClass('left-panel__collapse')
         panel_close.hide()
-        
-        /*right_panel.promise().done(function () {
-          
-          if (left_panel.is(':hover')) {
-            left_panel.addClass('left-panel__expand2')
-            console.log('EXECUTED if(L_PAN hover)')
-          }
-        }); */
+        panel_content.fadeOut()
       },
       
       'click': function() {
@@ -104,7 +89,9 @@
     
     /* ---------
     ** Inner Panel Function: CLOSE
-    ** Listens for click on panel close.
+    ** Listens for click on panel close and pushes click data
+    ** to prioritize panel/close button event conflict.
+    ** Refer to 'click' functions in L/R panels.
     ** --------- */
     panel_close.on({
       'click': function() {

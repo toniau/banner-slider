@@ -12,14 +12,14 @@ html, body {
   border: 0;
 }
 
-h2 {
+h1 {
   margin: 0px 10px 10px 20px;
   padding-top: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #fff;
 }
-h3 {
+h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -36,15 +36,6 @@ a {
   padding: 20px 0px 0px 20px;
 }
 
-/*.slider {
-  border: 1px solid #f4c2c2;
-}
-
-@media screen and (max-width: 1920px) {
-  section.slider {
-    min-height: 30vh;
-  }
-}*/
 /* CONTAINER CSS, General Banner Panel CSS
 ** BLESS: https://bennettfeely.com/clippy/
 ** ^-- makes clip-paths for you
@@ -64,18 +55,17 @@ a {
 .container {
   width: 100%;
   height: 100%;
-  background-color: #ff5200
+  background-color: #ff5200;
 }
 .shape {
   transition: all 500ms ease-in-out;
+  background-image: url(imgs/hk-butterfly.jpeg);
 }
 .panel-content {
   display: none;
   position: relative;
   z-index: 10;
   top: 0;
-  right: 0;
-  width: 25%;
   height: 100%;
 }
 .panel-blurb {
@@ -83,21 +73,24 @@ a {
   z-index: 9;
   height: 100%;
 }
+.panel-blurb__dscr {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1;
+  font-size: 1rem;
+}
 .panel-blurb__link {
   text-decoration: underline;
   text-transform: uppercase;
+  padding-bottom: 40px;
 }
 .panel-close {
   position: absolute;
   z-index: 100 !important;
-  top: 0 !important;
+  top: 0;
   cursor: pointer;
   font-size: 2em;
   padding: 0 10px 10px 10px;
   margin-top: -10px;
-}
-.panel-close:hover {
-  color:red;
 }
 
 /* Panels : Initial State */
@@ -105,9 +98,10 @@ a {
   position: absolute;
   z-index: 2;
   display: block;
-  background-image: url(imgs/hk-stag2.jpg);
+  background-image: url(imgs/hk-stag_RHS-ADD2.jpg);
   background-repeat: no-repeat;
-  background-color: #090915;
+  background-size: calc(130vh);
+  background-color: rgba(93, 93, 93, 1);
   background-position: -100px 0;
   width: 100%;
   height: 100%;
@@ -122,7 +116,7 @@ a {
   display: block;
   background-image: url(imgs/sv-road3.jpg);
   background-repeat: no-repeat;
-  background-size: calc(120vh);
+  background-size: calc(122vh);
   background-color: rgba(240, 240, 240, 1);
   background-position: right;
   width: 100%;
@@ -138,19 +132,11 @@ a {
 .left-panel__expand {
   position: absolute;
   z-index: 2;
-  background-image: url(imgs/hk-stag.gif);
+  background-image: url(imgs/hk-stag_RHS-ADD2.gif);
+  background-size: calc(130vh);
   shape-outside: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
   clip-path: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
   transition: all 0.5s ease-in-out;
-}
-.left-panel__expand2 {
-  position: absolute;
-  z-index: 2;
-  transition-timing-function: ease-in-out;
-  background-image: url(imgs/hk-stag.gif);
-  clip-path: polygon(0 0, 79.5% 0, 39.5% 100%, 0 100%);
-  animation-duration: 3s;
-  animation-fill-mode: both;
 }
 .left-panel__collapse {
   position: absolute;
@@ -164,7 +150,7 @@ a {
   z-index: 2;
   background-image: url(imgs/sv-road2.gif);
   background-position: right;
-  background-size: calc(120vh);
+  background-size: calc(122vh);
   shape-outside: polygon(60.5% 0, 100% 0, 100% 100%, 20.5% 100%);
   clip-path: polygon(60.5% 0, 100% 0, 100% 100%, 20.5% 100%);
   transition: all 0.5s ease-in-out;
@@ -179,7 +165,7 @@ a {
 
 /* Panels : Fully-expanded State */
 .left-panel__full {
-  background-image: url(imgs/hk-stag.gif);
+  background-image: url(imgs/hk-stag_RHS-ADD2.gif);
   shape-outside: polygon(0 0, 139.5% 0, 100% 100%, 0 100%);
   clip-path: polygon(0 0, 139.5% 0, 100% 100%, 0 100%);
   transition: all 500ms ease-in-out;
@@ -194,29 +180,45 @@ a {
   position: absolute;
   z-index: 10;
   right: 0;
+  background-color: rgba(93, 93, 93, 1);
+  float: right;
+  width: 30%;
 }
 .left-panel  .panel-blurb {
   position: absolute;
   z-index: 10;
-  padding: 20px 10px 10px 10px;
-  background-color: rgba(93, 93, 93, 0.3);
+  padding: 20px 20px 10px 20px;
+  text-align: left;
+  margin: auto;
+  overflow-y: auto;
 }
 .left-panel .panel-close {
   right: 0;
   color: #fff;
+  background-color: rgba(93, 93, 93, 1);
 }
 .right-panel > .panel-content {
   position: absolute;
   z-index: 10;
   left: 0;
-  width: 25%;
+  width: 30%;
 }
 .right-panel  .panel-blurb {
   position: absolute;
   z-index: 10;
-  padding: 20px 10px 10px 10px;
+  padding: 20px 30px 10px 30px;
   background-color: rgba(240, 240, 240, 0.92);
   text-align: left;
+  margin: auto;
+  overflow-y: auto;
+}
+.right-panel h1 + p {
+  margin-bottom: 2px;
+  line-height: 1px;
+}
+.right-panel .panel-blurb p {
+  padding-left: 5px;
+  padding-bottom: 20px;
 }
 .right-panel .panel-blurb__link {
   color: #000;
@@ -224,32 +226,21 @@ a {
 .right-panel .panel-close {
   left: 0;
   color: #000;
+  background-color: rgba(240, 240, 240, 1);
 }
 
 /* Media Queries */
 @media screen and (min-width: 1370px) {
+  .left-panel__full {
+    transition: all 0.5s ease-in-out;
+    background-size: calc(140vh);
+  }
   .right-panel__full {
     transition: all 0.5s ease-in-out;
     background-size: calc(100vh);
   }
+  .right-panel .panel-blurb {
+    padding: 30px 20px 20px 20px;
+    width: 110%;
+  }
 }
-/*
-@keyframes expand-right {
-  from { clip-path: polygon(0 0, 70% 0%, 30% 100%, 0% 100%); }
-  to   { clip-path: polygon(0 0, 80% 0, 40% 100%, 0% 100%); }
-}
-
-@keyframes expand-left {
-  from { clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%); }
-  to   { clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 20% 100%); }
-}
-
-@keyframes collapse-right {
-  from { clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 20% 100%); }
-  to   { clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%); }
-}
-
-@keyframes collapse-left {
-  from { clip-path: polygon(0 0, 80% 0%, 40% 100%, 0% 100%); }
-  to   { clip-path: polygon(0 0, 70% 0, 30% 100%, 0% 100%); }
-} */
