@@ -230,7 +230,7 @@ a {
 }
 
 /* Media Queries */
-@media screen and (min-width: 1370px) {
+@media screen and (min-width: 1300px) {
   .left-panel, .left-panel__expanded {
     transition: all 0.5s ease-in-out;
     background-size: calc(80vw);
